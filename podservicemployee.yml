@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: depapieployee
+spec: 
+  replicas: 2
+  selector:
+    matchLabels:
+       app: monfront
+  template:
+    metadata:
+      labels:
+        app: monfront
+    spec:
+      containers:
+      - name: myemployee
+        image: rliance/mondockerrepo:employeeserviceapi2
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        readinessProbe:
+          httpGet:
+             path: /employees
+             port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          
+

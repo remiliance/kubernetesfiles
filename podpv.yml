@@ -1,0 +1,21 @@
+kind: Pod
+apiVersion: v1
+metadata:
+ name: monpodpv
+ labels:
+  env: prod
+spec: 
+ containers:
+ - name: nginxpvc
+   image: nginx
+   ports:
+   - containerPort: 80
+   volumeMounts:
+   - mountPath: "/usr/share/nginx/html"
+     name: monvolume
+ volumes:
+  - name: monvolume
+    persistentVolumeClaim:
+     claimName: mynfspvc
+
+

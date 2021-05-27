@@ -1,0 +1,66 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    meta.helm.sh/release-name: mywordpress
+    meta.helm.sh/release-namespace: default
+    volume.beta.kubernetes.io/storage-provisioner: kubernetes.io/gce-pd
+  creationTimestamp: "2020-07-09T09:15:12Z"
+  finalizers:
+  - kubernetes.io/pvc-protection
+  labels:
+    app.kubernetes.io/instance: mywordpress
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: wordpress
+    helm.sh/chart: wordpress-9.3.19
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:meta.helm.sh/release-name: {}
+          f:meta.helm.sh/release-namespace: {}
+        f:labels:
+          .: {}
+          f:app.kubernetes.io/instance: {}
+          f:app.kubernetes.io/managed-by: {}
+          f:app.kubernetes.io/name: {}
+          f:helm.sh/chart: {}
+      f:spec:
+        f:accessModes: {}
+        f:resources:
+          f:requests:
+            .: {}
+            f:storage: {}
+        f:volumeMode: {}
+      f:status:
+        f:phase: {}
+    manager: Go-http-client
+    operation: Update
+    time: "2020-07-09T09:15:11Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          f:volume.beta.kubernetes.io/storage-provisioner: {}
+    manager: kube-controller-manager
+    operation: Update
+    time: "2020-07-09T09:15:12Z"
+  name: mywordpress
+  namespace: default
+  resourceVersion: "1610498"
+  selfLink: /api/v1/namespaces/default/persistentvolumeclaims/mywordpress
+  uid: c2b88e04-b362-4554-85e1-aafad088b232
+spec:
+   accessModes:
+     - ReadWriteOnce
+   storageClassName: manual
+   resources:
+     requests:
+       storage: 9Mi
+   volumeName: pv-wordpress
+status:
+  phase: Pending
